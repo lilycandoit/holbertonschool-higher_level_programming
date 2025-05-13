@@ -11,6 +11,14 @@ def roman_to_int(roman_string):
         'M': 1000
     }
     sum = 0
-    for num in roman_string:
-        sum = sum + roman_table.get(num)
+    prev_value = 0
+
+    for key in reversed(roman_string):
+        value = roman_table.get(key, 0)
+        if value < prev_value:
+            sum -= value
+        else:
+            sum += value
+
+        prev_value = value
     return sum
