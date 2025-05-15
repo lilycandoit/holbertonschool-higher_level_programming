@@ -53,10 +53,8 @@ Tests:
     ZeroDivisionError: division by zero
 
     Test - if div is inf
-    >>> matrix_divided([[1, 2], [3, 4]], "inf")
-    Traceback (most recent call last):
-    ...
-    TypeError: div must be a number
+    >>> matrix_divided([[1, 2], [3, 4]], float('inf'))
+    [[0.0, 0.0], [0.0, 0.0]]
 
     Test - if div is NaN
     >>> matrix_divided([[1, 2], [3, 4]], "nan")
