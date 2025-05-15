@@ -52,8 +52,26 @@ Tests:
     ...
     ZeroDivisionError: division by zero
 
+    Test - if div is inf
+    >>> matrix_divided([[1, 2], [3, 4]], "inf")
+    Traceback (most recent call last):
+    ...
+    TypeError: div must be a number
+
     Test - if div is NaN
     matrix_divided([[1, 2], [3, 4]], "nan")
     Traceback (most recent call last):
     ...
     TypeError: div must be a number
+
+    Test - missing one argument
+    >>>  matrix_divided([[1, 2], [3, 4]])
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix_divided() missing 1 required positional argument: 'div'
+
+    Test - missing both arguments
+    >>> matrix_divided()
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
