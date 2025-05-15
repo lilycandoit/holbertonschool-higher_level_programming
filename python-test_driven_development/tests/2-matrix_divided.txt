@@ -59,7 +59,7 @@ Tests:
     TypeError: div must be a number
 
     Test - if div is NaN
-    matrix_divided([[1, 2], [3, 4]], "nan")
+    >>> matrix_divided([[1, 2], [3, 4]], "nan")
     Traceback (most recent call last):
     ...
     TypeError: div must be a number
