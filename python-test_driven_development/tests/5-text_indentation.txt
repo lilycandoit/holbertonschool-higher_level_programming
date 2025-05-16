@@ -1,0 +1,57 @@
+The ``text_indentation`` module
+===============================
+
+Using ``text_indentation``
+---------------------------
+
+First, import ``text_indentation`` from the ``5-text_indentation`` file:
+
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Tests
+-----
+
+Basic usage with punctuation:
+
+    >>> text_indentation("Hello. How are you? I am fine.")
+    Hello.
+
+    How are you?
+
+    I am fine.
+
+
+
+Text with mixed spacing:
+
+    >>> text_indentation("Python is fun.  Let's go! Right: now.")
+    Python is fun.
+
+    Let's go! Right:
+
+    now.
+
+Empty string:
+
+    >>> text_indentation("")
+
+
+Test with no punctuation at all:
+
+    >>> text_indentation("Just a plain sentence without any punctuation")
+    Just a plain sentence without any punctuation
+
+Test: input is not a string:
+
+    >>> text_indentation(123)
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
+
+Test: missing argument:
+
+    >>> text_indentation()
+    Traceback (most recent call last):
+    ...
+    TypeError: text_indentation() missing 1 required positional argument: 'text'
+
