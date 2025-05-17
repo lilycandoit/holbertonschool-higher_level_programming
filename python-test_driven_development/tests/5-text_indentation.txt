@@ -15,10 +15,11 @@ Basic usage with punctuation:
 
     >>> text_indentation("Hello. How are you? I am fine.")
     Hello.
-
+    <BLANKLINE>
     How are you?
-
+    <BLANKLINE>
     I am fine.
+    <BLANKLINE>
 
 
 
@@ -26,14 +27,17 @@ Text with mixed spacing:
 
     >>> text_indentation("Python is fun.  Let's go! Right: now.")
     Python is fun.
-
+    <BLANKLINE>
     Let's go! Right:
-
+    <BLANKLINE>
     now.
+    <BLANKLINE>
+
 
 Empty string:
 
     >>> text_indentation("")
+    <BLANKLINE>
 
 
 Test with no punctuation at all:
