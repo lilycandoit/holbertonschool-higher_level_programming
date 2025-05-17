@@ -37,7 +37,6 @@ Text with mixed spacing:
 Empty string:
 
     >>> text_indentation("")
-    <BLANKLINE>
 
 
 Test with no punctuation at all:
