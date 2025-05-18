@@ -17,7 +17,7 @@ Tests:
     My name is Walter White
 
     >>> say_my_name("Bob")
-    My name is Bob
+    My name is Bob 
 
 Test - first_name is not a string:
 
