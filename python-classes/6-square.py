@@ -14,7 +14,7 @@ class Square:
     """A class that defines a square by its size and can compute area."""
     __size = 0
 
-    def __init__(self, size = 0, position = (0, 0)):
+    def __init__(self, size=0, position=(0, 0)):
         """
         Initialize the square.
 
@@ -83,9 +83,10 @@ class Square:
 
         if self.__size == 0:
             print()
+            return
 
         # print vertical positions (blank lines)
-        for _ in range (self.__position[1]):
+        for _ in range(self.__position[1]):
             print()
 
         # print each row
