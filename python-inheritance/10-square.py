@@ -1,0 +1,42 @@
+#!/usr/bin/python3
+
+"""
+This module defines a class BaseGeometry and its subclasse Rectangle
+"""
+BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+
+class Square(BaseGeometry):
+    """
+    Represents a square shape, inherits from BaseGeometry.
+    """
+    def __init__(self, size):
+        """
+        Initialize a square with size.
+
+        size must be a positive integer, validated by integer_validator
+
+        Args:
+            size (int)
+        """
+
+        self.integer_validator("size", size)
+        self.__size = size
+
+    def area(self):
+        """
+        Calculate and return the area of the square
+        """
+        return self.__size * self.__size
+
+    def __str__(self):
+        """
+        Return a string representation of the Square object.
+
+        Format:
+            [Rectangle] <size>/<size>
+
+        Returns:
+            str: Formatted string describing the square's dimensions.
+        """
+        return ("[Rectangle] {}/{}".format(self.__size, self.__size))
