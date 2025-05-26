@@ -40,4 +40,6 @@ class Square(Rectangle):
         Returns:
             str: Formatted string describing the square's dimensions.
         """
-        return ("[{}] {}/{}".format(type(self).__name__, self.__size, self.__size))
+        return ("[{}] {}/{}".format(type(self).__name__,
+                                    self.__size,
+                                    self.__size))
