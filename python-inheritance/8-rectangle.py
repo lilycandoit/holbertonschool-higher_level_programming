@@ -1,0 +1,73 @@
+#!/usr/bin/python3
+
+"""
+This module defines an class BaseGeometry with public instance method 'area'
+"""
+
+
+class BaseGeometry:
+    """
+    Represents a base geometry class with methods for validation.
+
+    Methods:
+        area(self):
+            Raises an Exception with the message "area() is not implemented".
+
+        integer_validator(self, name, value):
+            Validates that 'value' is an integer greater than 0.
+
+            Args:
+                name (str): The name of the parameter (for error messages).
+                value (int): The value to validate.
+
+            Raises:
+                TypeError: If value is not an integer.
+                ValueError: If value is <= 0.
+    """
+    def area(self):
+        """
+        Raise an Exception indicating that the area method is not implemented.
+
+        Raises:
+            Exception: With the message "area() is not implemented".
+        """
+        raise Exception("area() is not implemented")
+
+    def integer_validator(self, name, value):
+        """
+        Raise an Exception indicating that the area method is not implemented.
+
+        Raises:
+            Exception: With the message "area() is not implemented".
+        """
+        if type(value) is not int:
+            raise TypeError("{} must be an integer".format(name))
+        if value <= 0:
+            raise ValueError("{} must be greater than 0".format(name))
+
+
+class Rectangle(BaseGeometry):
+    """
+    Represents a rectangle shape, inherits from BaseGeometry.
+
+    Attributes:
+        __width (int): The width of the rectangle (validated).
+        __height (int): The height of the rectangle (validated).
+    """
+    def __init__(self, width, height):
+        """
+        Initialize a rectangle with width and height.
+
+        Args:
+            width (int): The width of the rectangle.
+            height (int): The height of the rectangle.
+
+        Raises:
+            TypeError: If width or height is not an integer.
+            ValueError: If width or height <= 0.
+        """
+        self.integer_validator("width", width)
+        self.__width = width
+
+        self.integer_validator("height", height)
+        self.__height = height
