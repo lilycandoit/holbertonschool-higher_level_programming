@@ -1,14 +1,14 @@
 #!/usr/bin/python3
 
 """
-This module defines a class BaseGeometry and its subclasse Rectangle
+This module defines a class Square that inherited from Rectangle
 """
-BaseGeometry = __import__('7-base_geometry').BaseGeometry
+Rectangle = __import__('9-rectangle').Rectangle
 
 
-class Square(BaseGeometry):
+class Square(Rectangle):
     """
-    Represents a square shape, inherits from BaseGeometry.
+    Represents a square shape, inherits from Rectangle.
     """
     def __init__(self, size):
         """
@@ -22,6 +22,7 @@ class Square(BaseGeometry):
 
         self.integer_validator("size", size)
         self.__size = size
+        super().__init__(size, size)
 
     def area(self):
         """
