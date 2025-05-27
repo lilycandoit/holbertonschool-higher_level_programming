@@ -14,6 +14,6 @@ class VerboseList(list):
         super().remove(value)
 
     def pop(self, index=-1):
-        item = self[index]
+        item = super().pop(index)
         print("Popped [{}] from the list.".format(item))
-        super().pop(index)
+        return item
