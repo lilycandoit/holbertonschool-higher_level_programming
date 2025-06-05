@@ -25,7 +25,8 @@ class Student:
         """
         Retrieves a dictionary representation of the Student instance.
 
-        If `attrs` is a list of strings, only return attributes listed in `attrs`.
+        If `attrs` is a list of strings,
+        only return attributes listed in `attrs`.
         Otherwise, return all attributes.
 
         Args:
