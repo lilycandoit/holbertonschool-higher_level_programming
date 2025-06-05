@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-This module defines a class Student with filter that can be serialized to JSON.
+This module defines a Student class that
+supports JSON serialization and deserialization.
 """
 
 
