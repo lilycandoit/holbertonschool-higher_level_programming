@@ -40,3 +40,18 @@ class Student:
             return {key: self.__dict__[key]
                     for key in attrs if key in self.__dict__}
         return self.__dict__
+
+    def reload_from_json(self, json):
+        """
+        Replaces all attributes of the Student instance
+        using a dictionary.
+
+        This method is used to restore an instance
+        from a serialized state (JSON format)
+        (e.g., loaded from a file).
+
+        Args:
+            json (dict): A dictionary with keys matching attribute names.
+        """
+        for key, value in json.items():
+            setattr(self, key, value)
