@@ -7,7 +7,7 @@ response = requests.get(f"{BASE_URL}/posts")
 
 
 def fetch_and_print_posts():
-    print("Status code: ", response.status_code)
+    print(f"Status code: {response.status_code}")
 
     if response.status_code == 200:
         posts = response.json()
@@ -41,4 +41,4 @@ def fetch_and_save_posts():
 
         print(f"{len(posts_data)} posts successfully saved to posts.csv file")
     else:
-        print("Failed to fetch posts:", response.status_code)
+        print(f"Failed to fetch posts: {response.status_code}")
