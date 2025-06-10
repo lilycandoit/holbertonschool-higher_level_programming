@@ -32,7 +32,7 @@ def fetch_and_save_posts():
         # write to CSV using DictWriter
         with open("posts.csv", "w") as csv_file:
             # define column headers
-            fieldnames = ["id", "title", "body", 'userId']
+            fieldnames = ["id", "title", "body"]
             writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
 
             # write header row
