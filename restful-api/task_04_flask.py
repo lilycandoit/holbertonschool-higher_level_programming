@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, abort
 
 app = Flask(__name__)
 
@@ -53,15 +53,13 @@ def get_user(username):
 @app.route("/add_user", methods=["POST"])
 def add_user():
     """ add a new user to the dict """
-    data = request.get_json()
-    print(f"Parsed JSON: {data}")
-
+    data = request.get_json(silent=True)
     if not data:
         return jsonify({"error": "Invalid JSON"}), 400
 
     username = data.get('username')
     print(f"User name: {username}")
-    
+
     if not username:
         return jsonify({"error": "Username is required"}), 400
 
