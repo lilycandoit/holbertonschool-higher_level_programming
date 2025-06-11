@@ -3,21 +3,7 @@ from flask import Flask, jsonify, request, abort
 app = Flask(__name__)
 
 # Temporary in-memory data storage
-users = {
-    "jane": {"username": "jane", "name": "Jane",
-             "age": 28, "city": "Los Angeles"},
-    "john": {"username": "john", "name": "John",
-             "age": 30, "city": "New York"}
-}
-
-def format_user(user_data):
-    """Helper function to ensure consistent user data ordering"""
-    return {
-        "username": user_data.get("username"),
-        "name": user_data.get("name"),
-        "age": user_data.get("age"),
-        "city": user_data.get("city")
-    }
+users = {}
 
 
 @app.route("/")
@@ -27,9 +13,7 @@ def home():
 
 @app.route("/data")
 def get_data():
-    # Format all users with consistent ordering
-    formatted_users = [format_user(user) for user in users.values()]
-    return jsonify(formatted_users)
+    return jsonify(list(users.keys()))
 
 
 @app.route("/status")
@@ -42,10 +26,7 @@ def get_user(username):
     user = users.get(username)
 
     if user:
-        formatted = format_user(user)
-        print(f"Original: {user}")
-        print(f"Formatted: {formatted}")
-        return jsonify(formatted)
+        return jsonify(user)
     else:
         return jsonify({"error": "User not found"}), 404
 
@@ -53,7 +34,7 @@ def get_user(username):
 @app.route("/add_user", methods=["POST"])
 def add_user():
     """ add a new user to the dict """
-    data = request.get_json(silent=True)
+    data = request.get_json()
     if not data:
         return jsonify({"error": "Invalid JSON"}), 400
 
@@ -63,11 +44,12 @@ def add_user():
     if not username:
         return jsonify({"error": "Username is required"}), 400
 
+    if username is users:
+        return jsonify({"error": "Username already exists"}), 400
+
     users[username] = data
 
-    formatted_user = format_user(data)
-
-    return jsonify({"message": "User added", "user": formatted_user}), 201
+    return jsonify({"message": "User added", "user": data}), 201
 
 
 if __name__ == "__main__":
