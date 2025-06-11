@@ -10,6 +10,15 @@ users = {
              "age": 30, "city": "New York"}
 }
 
+def format_user(user_data):
+    """Helper function to ensure consistent user data ordering"""
+    return {
+        "username": user_data.get("username"),
+        "name": user_data.get("name"),
+        "age": user_data.get("age"),
+        "city": user_data.get("city")
+    }
+
 
 @app.route("/")
 def home():
@@ -18,7 +27,9 @@ def home():
 
 @app.route("/data")
 def get_data():
-    return jsonify(list(users.values()))
+    # Format all users with consistent ordering
+    formatted_users = [format_user(user) for user in users.values()]
+    return jsonify(formatted_users)
 
 
 @app.route("/status")
@@ -31,14 +42,25 @@ def get_user(username):
     user = users.get(username)
 
     if user:
-        return jsonify(user)
+        formatted = format_user(user)
+        print(f"Original: {user}")
+        print(f"Formatted: {formatted}")
+        return jsonify(formatted)
     else:
         return jsonify({"error": "User not found"}), 404
 
 
 @app.route("/add_user", methods=["POST"])
 def add_user():
+    # debugging
+    print(f"Raw request data: {request.data}")
+    print(f"Content-Type: {request.content_type}")
     data = request.get_json()
+    print(f"Parsed JSON: {data}")
+
+    if not data:
+        return jsonify({"error": "Invalid JSON"}), 400
+
     username = data.get('username')
     if not username:
         return jsonify({"error": "Username is required"}), 400
@@ -46,7 +68,10 @@ def add_user():
         return jsonify({"error": "Duplicate username"}), 400
 
     users[username] = data
-    return jsonify({"message": "User added", "user": data}), 201
+
+    formatted_user = format_user(data)
+
+    return jsonify({"message": "User added", "user": formatted_user}), 201
 
 
 if __name__ == "__main__":

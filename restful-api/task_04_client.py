@@ -2,8 +2,8 @@ import requests
 
 url = "http://localhost:5000/add_user"
 data = {
-    "username": "john",
-    "name": "Johnyyy",
+    "username": "joe",
+    "name": "joe",
     "age": 30,
     "city": "New York"
 }
