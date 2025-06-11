@@ -52,9 +52,7 @@ def get_user(username):
 
 @app.route("/add_user", methods=["POST"])
 def add_user():
-    # debugging
-    print(f"Raw request data: {request.data}")
-    print(f"Content-Type: {request.content_type}")
+    """ add a new user to the dict """
     data = request.get_json()
     print(f"Parsed JSON: {data}")
 
@@ -62,10 +60,10 @@ def add_user():
         return jsonify({"error": "Invalid JSON"}), 400
 
     username = data.get('username')
+    print(f"User name: {username}")
+    
     if not username:
         return jsonify({"error": "Username is required"}), 400
-    if username in users:
-        return jsonify({"error": "Duplicate username"}), 400
 
     users[username] = data
 
