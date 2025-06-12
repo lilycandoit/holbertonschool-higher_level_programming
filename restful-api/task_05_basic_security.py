@@ -34,15 +34,12 @@ def verify_password(username, password):
         return user  # Return full user dict
     return None
 
-# Explicit auth error handler
+# Basic Auth error handler
 @auth.error_handler
-def auth_error():
-    return jsonify({"error": "Unauthorized"}), 401
-
-# Global fallback (for checker)
-@app.errorhandler(401)
-def global_401_error(e):
-    return jsonify({"error": "Unauthorized"}), 401
+def auth_error(status):
+    return jsonify({"error": "Unauthorized"}), status, {
+        'WWW-Authenticate': 'Basic realm="Authentication Required"'
+    }
 
 # JWT ERROR HANDLERS
 @jwt.unauthorized_loader
