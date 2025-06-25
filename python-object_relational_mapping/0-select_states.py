@@ -10,6 +10,7 @@ from the states table, sorted by id in ascending order.
 import MySQLdb
 import sys   # For command line arguments
 
+
 def main():
     """Connects to MySQL and lists all states."""
     # get input from command lines
@@ -40,6 +41,7 @@ def main():
     # close cursor and connection
     cursor.close()
     db.close()
+
 
 if __name__ == "__main__":
     main()
