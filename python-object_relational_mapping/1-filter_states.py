@@ -27,7 +27,7 @@ def main():
     # create a cursor object to execute SQL queries and fetch results
     cursor = db.cursor()
 
-    cursor.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id")
+    cursor.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
 
     # fetch all rows
     results = cursor.fetchall()
