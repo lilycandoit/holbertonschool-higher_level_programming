@@ -30,8 +30,9 @@ def main():
     # create a cursor object to execute SQL queries and fetch results
     cursor = db.cursor()
 
-    query = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC"
-    cursor.execute(query.format(keyword))
+    query = "SELECT * FROM states WHERE BINARY name = %s ORDER BY id ASC"
+    cursor.execute(query, (keyword,))
+    # this way is safer, same as: query.format(user_input)
 
     # fetch all rows
     results = cursor.fetchall()
