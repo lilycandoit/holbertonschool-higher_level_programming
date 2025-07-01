@@ -30,5 +30,4 @@ class State(Base):
 
     # Define the relationship to cities (one-to-many)
     cities = relationship(
-        "City", back_populates="state", cascade="all, delete-orphan"
-        )
+        "City", back_populates="state", cascade="all, delete-orphan")
