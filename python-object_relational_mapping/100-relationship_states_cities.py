@@ -47,18 +47,6 @@ if __name__ == "__main__":
         session.add(california)  # This also adds san_francisco automatically
         session.commit()
 
-        # Display states table
-        print("id\tname")
-        states = session.query(State).all()
-        for state in states:
-            print(f"{state.id}\t{state.name}")
-
-        # Display cities table
-        print("id\tname\t\tstate_id")
-        cities = session.query(City).all()
-        for city in cities:
-            print(f"{city.id}\t{city.name}\t\t{city.state_id}")
-
     except Exception as e:
         session.rollback()
         print(f"Error: {e}")
