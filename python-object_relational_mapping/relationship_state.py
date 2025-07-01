@@ -29,5 +29,6 @@ class State(Base):
     name = Column(String(128), nullable=False)
 
     # Define the relationship to cities (one-to-many)
-    cities = relationship("City", back_populates="state", cascade="all, delete-orphan")
-
+    cities = relationship(
+        "City", back_populates="state", cascade="all, delete-orphan"
+        )
