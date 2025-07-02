@@ -28,5 +28,3 @@ class City(Base):
     state_id = Column(Integer, ForeignKey('states.id'), nullable=False)
     name = Column(String(128), nullable=False)
 
-    # Define relationship to state
-    state = relationship("State", back_populates="cities")
