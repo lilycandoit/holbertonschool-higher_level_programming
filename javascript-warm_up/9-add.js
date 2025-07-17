@@ -9,6 +9,6 @@ if (arg1 === undefined || arg2 === undefined || isNaN(arg1) || isNaN(arg2)) {
   console.log(add(arg1, arg2));
 }
 
-function add(a, b) {
+function add (a, b) {
   return a + b;
 }
