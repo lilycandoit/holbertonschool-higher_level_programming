@@ -1,6 +1,5 @@
 #!/usr/bin/node
 
-console.log(process.argv);
 const args = process.argv.length;
 
 if (args === 2) {
