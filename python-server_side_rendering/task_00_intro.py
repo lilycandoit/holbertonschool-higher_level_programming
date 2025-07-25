@@ -17,14 +17,6 @@ def generate_invitations(template, attendees):
         print("No data provided, no output files generated.")
         return
 
-    # Ensure output directory exists
-    output_dir = "output_invitations"
-    try:
-        os.makedirs(output_dir, exist_ok=True)
-    except PermissionError:
-        print(f"Error: Permission denied to create directory '{output_dir}'.")
-        return
-
     # Process each attendee
     for i, person in enumerate(attendees, start=1):
         content = template
@@ -33,7 +25,7 @@ def generate_invitations(template, attendees):
             content = content.replace(f"{{{key}}}", value if value else "N/A")
 
         # Write to output_i.txt
-        output_filename = os.path.join(output_dir, f"output_{i}.txt")
+        output_filename = f"output_{i}.txt"
         try:
             with open(output_filename, "w") as f:
                 f.write(content)
