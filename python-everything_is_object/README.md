@@ -13,6 +13,22 @@ This project is part of the Holberton School curriculum, focusing on deepening o
 - Python object model and type introspection
 
 ---
+## ✅ Summary Table: Python `==` vs `is` by Type
+
+| Type        | `a == b` | `a is b`                         | Notes                                |
+|-------------|----------|----------------------------------|--------------------------------------|
+| `str`       | ✅       | ✅ (if interned)                 | Immutable, often interned            |
+| `list`      | ✅       | ❌                                | Mutable                              |
+| `int`       | ✅       | ✅ (small values) / ❌ (large values) | Small ints cached                    |
+| `float`     | ✅       | ❌                                | Not cached                           |
+| `tuple`     | ✅       | ❌                                | Immutable but not reused             |
+| `dict`      | ✅       | ❌                                | Mutable                              |
+| `bool`      | ✅       | ✅                                | Only two objects: `True`, `False`    |
+| `None`      | ✅       | ✅                                | Only one `None` object               |
+| `object()`  | ❌       | ❌                                | Always a new object                  |
+| custom class| ❌       | ❌                                | Unless you override `__eq__()`       |
+
+---
 
 ## 🔄 Python vs JavaScript: Value vs Reference
 
@@ -68,6 +84,21 @@ python-everything_is_object/
 ├── 0-answer.txt       # Task 0: Name of function that prints an object type
 ├── README.md          # Project description and comparison with JavaScript
 ```
+
+---
+
+
+## Tuple review
+| Code            | What is it?                        |
+| --------------- | ---------------------------------- |
+| `a = ()`        | ✅ Empty tuple                      |
+| `a = (1,)`      | ✅ Tuple with one element           |
+| `a = (1)`       | ❌ Just the number `1` (an int)     |
+| `a = 'a'`       | `'a'` (a string)                   |
+| `a = ('a')`     | ❌ Still just `'a'` (a string)      |
+| `a = 'a',`      | ✅ Tuple with one string element    |
+| `a = 1, 2, 3`   | ✅ Tuple — no parentheses needed    |
+| `a = (1, 2, 3)` | ✅ Tuple — parentheses for grouping |
 
 ---
 
